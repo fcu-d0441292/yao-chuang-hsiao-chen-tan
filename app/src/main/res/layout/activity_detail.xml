@@ -25,8 +25,8 @@
             android:id="@+id/NametextView"
             android:layout_width="399dp"
             android:layout_height="match_parent"
-            android:paddingTop="30dp"
-            android:text="尛尛尛尛尛"
+            android:paddingTop="25dp"
+            android:text="東海化學股份有限公司"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
