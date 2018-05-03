@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.myapplication.Detail">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="541dp"
+        app:srcCompat="@color/colorAccent"
+        tools:layout_editor_absoluteX="-13dp"
+        tools:layout_editor_absoluteY="-6dp" />
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="62dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-11dp"
+        tools:layout_editor_absoluteY="-8dp">
+
+        <TextView
+            android:id="@+id/NametextView"
+            android:layout_width="399dp"
+            android:layout_height="match_parent"
+            android:paddingTop="25dp"
+            android:text="東海化學股份有限公司"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="433dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="86dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="公司名稱"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/ComNametextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="樓華特公司"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="違反情節"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/MistaketextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="1.成分標示不清\n2.售價過高"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="處分法條"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/LawtextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="第 3 條 政府為達成本法目的，應實施下列措施，並應就與下列事項有關之法規及 其執行情形，定期檢討、協調、改進之： 一、維護商品或服務之品質與安全衛生。" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="處分日期"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/LawDatetextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="2018 / 1 / 05"
+            android:textAlignment="center" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
