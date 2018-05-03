@@ -10,7 +10,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-
+//asjlkdsjaldjasldjlakjsdklajlksdlkasjdla
+    //asdk;laskd;laks;lda;lsd;lask;dl
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
