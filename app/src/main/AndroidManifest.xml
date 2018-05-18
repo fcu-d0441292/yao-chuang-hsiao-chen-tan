@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".Detail" />
         <activity android:name=".Setting" />
+        <activity android:name=".SearchList"></activity>
     </application>
 
 </manifest>

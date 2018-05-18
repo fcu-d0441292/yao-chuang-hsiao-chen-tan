@@ -170,10 +170,10 @@ public class ItemDAO {
 
     // 建立範例資料
     public void sample() {
-        Item item = new Item(1, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
-        Item item2 = new Item(2, new Date().getTime(), "保濕霜" , "逢甲公司" , "成分標示不清" , "消保法" , "2018/5/14");
-        Item item3 = new Item(3, new Date().getTime(), "BB霜" , "羅素公司" , "成分標示不清" , "消保法" , "2018/5/14");
-        Item item4 = new Item(4, new Date().getTime(), "彩妝" , "海迪公司" , "成分標示不清" , "消保法" , "2018/5/14");
+        Item item = new Item(0, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
+        Item item2 = new Item(1, new Date().getTime(), "保濕霜" , "逢甲公司" , "成分標示不清" , "消保法" , "2018/5/14");
+        Item item3 = new Item(2, new Date().getTime(), "BB霜" , "羅素公司" , "成分標示不清" , "消保法" , "2018/5/14");
+        Item item4 = new Item(3, new Date().getTime(), "彩妝" , "海迪公司" , "成分標示不清" , "消保法" , "2018/5/14");
 
         insert(item);
         insert(item2);

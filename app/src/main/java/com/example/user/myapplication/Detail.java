@@ -1,5 +1,6 @@
 package com.example.user.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -17,6 +18,28 @@ public class Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        //獲取SearchList傳送的值
+        Intent intent = getIntent();
+        String titlestring = intent.getStringExtra("KEY_title");
+        String CompanyNamestring = intent.getStringExtra("KEY_CompanyName");
+        String Detailstring = intent.getStringExtra("KEY_Detail");
+        String Lawstring = intent.getStringExtra("KEY_Law");
+        String LawDatestring = intent.getStringExtra("KEY_LawDate");
+
+        //綁定UI
+        TextView Title = (TextView)findViewById(R.id.TitleText);
+        TextView CompanyName = (TextView)findViewById(R.id.ComNameText);
+        TextView Detail = (TextView)findViewById(R.id.DetailText);
+        TextView Law = (TextView)findViewById(R.id.LawText);
+        TextView LawDate = (TextView)findViewById(R.id.LawDateText);
+
+        //將值放入UI
+        Title.setText(titlestring);
+        CompanyName.setText(CompanyNamestring);
+        Detail.setText(Detailstring);
+        Law.setText(Lawstring);
+        LawDate.setText(LawDatestring);
 
      /*
          Name = (TextView)findViewById(R.id.NametextView);
