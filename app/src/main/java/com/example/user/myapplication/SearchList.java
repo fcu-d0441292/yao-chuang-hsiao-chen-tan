@@ -20,7 +20,8 @@ import java.util.List;
 public class SearchList extends ListActivity {
 
     List<Item> item = new  ArrayList<Item>();
-
+    int [] AllNumber = new int[100];
+    int Count = 0;
     //按下查詢結果**************************************************************************
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -31,17 +32,23 @@ public class SearchList extends ListActivity {
         //打入資料的內容(產品名稱  , 公司名稱 , 違反情節 , 處分法條 , 處罰日期 )
         switch(position) {
             case 0:
-
-               // item =  Setting.itemDAO.get(1);
-                title = item.get(0).getTitle();
-                CompanyName = item.get(0).getCompanyName();
-                Detail = item.get(0).getDetail();
-                Law = item.get(0).getLaw();
-                LawDate = item.get(0).getLawDate();
+                title = item.get(0 + AllNumber[0]).getTitle();
+                CompanyName = item.get(0 + AllNumber[0]).getCompanyName();
+                Detail = item.get(0 + AllNumber[0]).getDetail();
+                Law = item.get(0 + AllNumber[0]).getLaw();
+                LawDate = item.get(0 + AllNumber[0]).getLawDate();
                 break;
             case 1:
 
-                //item =  itemDAO.get(1);
+                title = item.get(1 + AllNumber[1]).getTitle();
+                CompanyName = item.get(1 + AllNumber[1]).getCompanyName();
+                Detail = item.get(1 + AllNumber[1]).getDetail();
+                Law = item.get(1 + AllNumber[1]).getLaw();
+                LawDate = item.get(1 + AllNumber[1]).getLawDate();
+                break;
+
+            default:
+
                 title = item.get(1).getTitle();
                 CompanyName = item.get(1).getCompanyName();
                 Detail = item.get(1).getDetail();
@@ -74,7 +81,7 @@ public class SearchList extends ListActivity {
         // 這是為了方便測試用的，完成應用程式以後可以拿掉
         ItemDAO itemDAO = new ItemDAO(getApplicationContext());
 
-        if (itemDAO.getCount() == 0) {
+       if (itemDAO.getCount() == 0) {
            itemDAO.sample();
         }
         ArrayList<String> albumList = new ArrayList<String>();
@@ -82,10 +89,31 @@ public class SearchList extends ListActivity {
 
         //獲得DataBase所有資料
         item = itemDAO.getAll();
-        //System.out.print(item.getCompanyName());
-        // System.out.print(1);
-        albumList.add("SK-II保濕霜");
-        albumList.add("ARJ防曬乳");
+
+        //(需完成)找出符合資料
+        boolean Find = false;      //是否包含 true:包含 false:未包含
+        String TitleName ="霜";    //包含的字
+       // item.get(0).setTitle("潤膚霜");
+       // item.get(0).setCompanyName("東海公司");
+       // itemDAO.update(item.get(0));
+        //開始搜尋
+        for(int i=0; i<itemDAO.getCount(); i++){
+          if(item.get(i).getTitle().indexOf(TitleName) != -1 ) Find = true; //有找出是否包含字
+           else Find = false; //沒有找出是否包含字
+
+           //依照上面結果放入ListView
+            if(Find){
+                //String.valueOf(itemDAO.getCount()) + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
+                albumList.add(item.get(i).getTitle() );
+                Find = false;
+                AllNumber[Count] = i-Count;
+                Count = Count + 1;
+            }
+
+        }
+    //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
+        //albumList.add("SK-II保濕霜");
+        //albumList.add("ARJ防曬乳");
 
 
 

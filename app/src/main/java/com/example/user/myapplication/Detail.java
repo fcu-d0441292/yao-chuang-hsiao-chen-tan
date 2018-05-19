@@ -1,5 +1,7 @@
 package com.example.user.myapplication;
-
+/*
+* 產品細節
+* */
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,7 +55,7 @@ public class Detail extends AppCompatActivity {
             itemDAO.sample();
         }
         //新增資料
-        Item item5 = new Item(5, new Date().getTime(), "洗髮乳" , "海倫公司" , "效果誇大" , "消保法" , "2018/5/20");
+        Item item5 = new Item(5, new Date().getTime(), "保濕乳" , "海倫公司" , "效果誇大" , "消保法" , "2018/5/20");
         itemDAO.insert(item5);
         // 取得所有記事資料
         Item item = new Item();
