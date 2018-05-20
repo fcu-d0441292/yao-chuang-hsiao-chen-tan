@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".Detail" />
         <activity android:name=".Setting" />
-        <activity android:name=".SearchList"></activity>
+        <activity android:name=".SearchList" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
