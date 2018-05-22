@@ -3,6 +3,8 @@ package com.example.user.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import net.macdidi.myandroidtutorial.ItemDAO;
+
 public class Setting extends AppCompatActivity {
 
     @Override

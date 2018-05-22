@@ -1,17 +1,27 @@
 package com.example.user.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import net.macdidi.myandroidtutorial.Item;
+import net.macdidi.myandroidtutorial.ItemDAO;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-//asjlkdsjaldjasldjlakjsdklajlksdlkasjdla
-    //asdk;laskd;laks;lda;lsd;lask;dl
+    private ImageButton medicine;
+    private ImageButton cosmetic;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -40,6 +50,30 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        medicine=findViewById(R.id.bt_medicine);
+        cosmetic=findViewById(R.id.bt_cosmetic);
+
+        View.OnClickListener bt_medicine=new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,SearchList.class);
+                startActivity(intent);
+            }
+        } ;
+        medicine.setOnClickListener((bt_medicine));
+
+        View.OnClickListener bt_cosmetic=new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,SearchList.class);
+                startActivity(intent);
+            }
+        } ;
+        cosmetic.setOnClickListener((bt_cosmetic));
+
+
     }
 
 }
