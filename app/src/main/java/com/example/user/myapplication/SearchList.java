@@ -137,7 +137,9 @@ public class SearchList extends ListActivity {
 
         //(需完成)找出符合資料
         boolean Find = false;      //是否包含 true:包含 false:未包含
-        String TitleName ="霜";    //包含的字
+        //獲取SearchActivity傳送的值
+        Intent intent = getIntent();
+        String TitleName =intent.getStringExtra("KEY_Input");    //包含的字
        // item.get(0).setTitle("潤膚霜");
        // item.get(0).setCompanyName("東海公司");
        // itemDAO.update(item.get(0));
@@ -148,15 +150,15 @@ public class SearchList extends ListActivity {
 
            //依照上面結果放入ListView
             if(Find){
-                //String.valueOf(itemDAO.getCount()) + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
-                albumList.add(item.get(i).getTitle() );
+                //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
+                albumList.add(item.get(i).getTitle());
                 Find = false;
                 AllNumber[Count] = i-Count;
                 Count = Count + 1;
             }
 
         }
-    //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
+        //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
         //albumList.add("SK-II保濕霜");
         //albumList.add("ARJ防曬乳");
 
