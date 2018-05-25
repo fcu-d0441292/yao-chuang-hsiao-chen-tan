@@ -38,7 +38,8 @@ public class SearchList extends ListActivity {
 
 
         //打入資料的內容(產品名稱  , 公司名稱 , 違反情節 , 處分法條 , 處罰日期 )
-        switch(position) {
+
+      /*  switch(position) {
             case 0:
                 title = item.get(0 + AllNumber[0]).getTitle();
                 CompanyName = item.get(0 + AllNumber[0]).getCompanyName();
@@ -46,26 +47,13 @@ public class SearchList extends ListActivity {
                 Law = item.get(0 + AllNumber[0]).getLaw();
                 LawDate = item.get(0 + AllNumber[0]).getLawDate();
                 break;
-            case 1:
+        }*/
 
-                title = item.get(1 + AllNumber[1]).getTitle();
-                CompanyName = item.get(1 + AllNumber[1]).getCompanyName();
-                Detail = item.get(1 + AllNumber[1]).getDetail();
-                Law = item.get(1 + AllNumber[1]).getLaw();
-                LawDate = item.get(1 + AllNumber[1]).getLawDate();
-                break;
-
-            default:
-
-                title = item.get(1).getTitle();
-                CompanyName = item.get(1).getCompanyName();
-                Detail = item.get(1).getDetail();
-                Law = item.get(1).getLaw();
-                LawDate = item.get(1).getLawDate();
-                break;
-        }
-
-
+        title = item.get( position + AllNumber[position]).getTitle();
+        CompanyName = item.get(position + AllNumber[position]).getCompanyName();
+        Detail = item.get(position + AllNumber[position]).getDetail();
+        Law = item.get(position + AllNumber[position]).getLaw();
+        LawDate = item.get(position + AllNumber[position]).getLawDate();
 
         Intent intent = new Intent();
         intent.setClass(SearchList.this,Detail.class); //切換頁面(從SearchList 切換到 Detail)
