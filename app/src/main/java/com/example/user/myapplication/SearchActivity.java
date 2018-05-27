@@ -19,6 +19,7 @@ public class SearchActivity extends ListActivity {
 
     private EditText input;
     private Button okbutton;
+    private Button DelButton;
 
     //查詢記錄
     private String[] RecordString = new String[]{"Record1","Record2","Record3","Record4","Record5","Record6","Record7","Record8","Record9","Record10"};
@@ -33,6 +34,7 @@ public class SearchActivity extends ListActivity {
         //UI綁定
         input = (EditText)findViewById(R.id.SerachInput);
         okbutton = (Button)findViewById(R.id.ok_button);
+        DelButton = (Button)findViewById(R.id.DelRecordButton);
 
         //okbutton功能===========================================================================================================
         okbutton.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +66,21 @@ public class SearchActivity extends ListActivity {
             }
         }); //okbutton功能===========================================================================================================
 
+        //DelButton功能===========================================================================================================
+        DelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RecordNumber = 0;
+                NowNumber = 0;
+                SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("RecordNumber" , RecordNumber);
+                editor.putInt("NowNumber" , NowNumber);
+                editor.commit();//要記得加
+                onResume();
+            }
 
-
+        }); //DelButton功能===========================================================================================================
 
         //取得查詢資料===========================================================================================================
         ArrayList<String> albumList = new ArrayList<String>();
