@@ -8,11 +8,15 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="383dp"
-        android:layout_height="513dp"
-        app:srcCompat="@drawable/backtable" />
+        android:layout_width="381dp"
+        android:layout_height="511dp"
+        android:scaleType="center"
+        android:src="@drawable/imageback"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="383dp"
         android:layout_height="515dp"
         android:orientation="vertical"
@@ -24,12 +28,13 @@
             android:layout_height="49dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="25dp"
-                android:layout_height="50dp"
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="28dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/magnifier" />
+                android:text="✎"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/SerachInput"
@@ -37,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="輸入產品名稱..."
+                android:inputType="textPersonName"
                 android:textAlignment="viewStart" />
 
             <Button
@@ -46,21 +51,35 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:text="OK" />
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:text="OK"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/DelRecordButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="清除歷史記錄" />
+            android:layout_width="101dp"
+            android:layout_height="37dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="清除歷史記錄"
+            android:textColor="#FFFFFF" />
 
         <ListView
             android:id="@android:id/list"
-            android:layout_width="370dp"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ListViewBackGround">
 
         </ListView>
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -5,11 +5,16 @@ package com.example.user.myapplication;
 import android.app.ListActivity;
 import android.content.Intent;
 import org.json.*;
+import org.w3c.dom.Text;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.macdidi.myandroidtutorial.Item;
@@ -30,6 +35,10 @@ public class SearchList extends ListActivity {
     List<Item> item = new  ArrayList<Item>();
     int [] AllNumber = new int[100];
     int Count = 0;
+
+    private boolean FindSomething = false; //有無找到資料 true:有找到 false:沒找到
+    private TextView NotFindText;
+    private ImageView NotFind;
     //按下查詢結果**************************************************************************
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -108,6 +117,7 @@ public class SearchList extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_list);
+        NotFindText  = (TextView)findViewById(R.id.NotFindText);
 
         getdata();
         // 如果資料庫是空的，就建立一些範例資料
@@ -141,19 +151,26 @@ public class SearchList extends ListActivity {
                 //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
                 albumList.add(item.get(i).getTitle());
                 Find = false;
+                FindSomething = true;
                 AllNumber[Count] = i-Count;
                 Count = Count + 1;
             }
 
         }
+
+
         //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
         //albumList.add("SK-II保濕霜");
         //albumList.add("ARJ防曬乳");
-
+        if(FindSomething){
+            NotFindText.setText("⊙以下為符合的資料⊙");
+        }
+        else NotFindText.setText("⊙沒找到任何資料⊙");
 
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, albumList);
+       // ArrayAdapter<String>  adapter = new ArrayAdapter<String>(this, R.layout.listitem, R.id.tv_listitem, albumList);
 
         setListAdapter(adapter);
 

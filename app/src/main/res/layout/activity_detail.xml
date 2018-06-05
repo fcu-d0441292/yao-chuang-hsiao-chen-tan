@@ -10,7 +10,8 @@
         android:id="@+id/imageView"
         android:layout_width="400dp"
         android:layout_height="541dp"
-        app:srcCompat="@drawable/backtable"
+        android:scaleType="center"
+        app:srcCompat="@drawable/imageback"
         tools:layout_editor_absoluteX="-13dp"
         tools:layout_editor_absoluteY="-6dp" />
 
@@ -37,6 +38,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:padding="5dp"
             android:text="⊙公司名稱⊙"
             android:textAlignment="center"
@@ -56,6 +58,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:padding="5dp"
             android:text="⊙違反情節⊙"
             android:textAlignment="center"
@@ -75,6 +78,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:padding="5dp"
             android:text="⊙處分法條⊙"
             android:textAlignment="center"
@@ -94,6 +98,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:padding="5dp"
             android:text="⊙處分日期⊙"
             android:textAlignment="center"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#6790ff</color>
     <color name="colorPrimaryDark">#a5aff0</color>
-    <color name="colorAccent">#f5aac3</color>
+    <color name="colorAccent">#a5aff0</color>
+    <color name="ListViewBackGround">#00feffe0</color>
 </resources>
