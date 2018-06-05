@@ -22,7 +22,8 @@
         android:id="@+id/background"
         android:layout_width="413dp"
         android:layout_height="610dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/imageback"
+        android:scaleType="center"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
