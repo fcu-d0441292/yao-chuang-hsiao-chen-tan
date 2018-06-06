@@ -3,6 +3,7 @@ package com.example.user.myapplication;
 * 產品細節
 * */
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -35,6 +36,13 @@ public class Detail extends AppCompatActivity {
         TextView Detail = (TextView)findViewById(R.id.DetailText);
         TextView Law = (TextView)findViewById(R.id.LawText);
         TextView LawDate = (TextView)findViewById(R.id.LawDateText);
+
+        //設定字型
+        Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        CompanyName.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        Detail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        Law.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        LawDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
 
         //將值放入UI
         Title.setText(titlestring);

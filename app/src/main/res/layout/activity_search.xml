@@ -34,6 +34,7 @@
                 android:layout_weight="1"
                 android:text="✎"
                 android:textAlignment="center"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="24sp" />
 
             <EditText
@@ -57,7 +58,7 @@
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 android:text="OK"
-                android:textColor="#FFFFFF" />
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -71,7 +72,7 @@
             android:shadowDy="0"
             android:shadowRadius="5"
             android:text="清除歷史記錄"
-            android:textColor="#FFFFFF" />
+            android:textColor="@android:color/background_light" />
 
         <ListView
             android:id="@android:id/list"

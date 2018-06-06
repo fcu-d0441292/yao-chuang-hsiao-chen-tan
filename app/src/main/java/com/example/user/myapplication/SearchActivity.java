@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,8 @@ public class SearchActivity extends ListActivity {
         DelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(RecordNumber!=0)Toast.makeText(SearchActivity.this, "歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(SearchActivity.this, "沒有任何歷史記錄!!!", Toast.LENGTH_SHORT).show();
                 RecordNumber = 0;
                 NowNumber = 0;
                 SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
@@ -77,6 +80,7 @@ public class SearchActivity extends ListActivity {
                 editor.putInt("RecordNumber" , RecordNumber);
                 editor.putInt("NowNumber" , NowNumber);
                 editor.commit();//要記得加
+
                 onResume();
             }
 
