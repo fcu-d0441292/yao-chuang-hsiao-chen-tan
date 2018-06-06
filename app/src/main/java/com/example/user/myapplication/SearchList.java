@@ -163,7 +163,7 @@ public class SearchList extends ListActivity {
         //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
         //albumList.add("SK-II保濕霜");
         //albumList.add("ARJ防曬乳");
-       // NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         if(FindSomething){
             NotFindText.setText("⊙以下為符合的資料⊙");
         }

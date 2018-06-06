@@ -37,12 +37,12 @@ public class Detail extends AppCompatActivity {
         TextView Law = (TextView)findViewById(R.id.LawText);
         TextView LawDate = (TextView)findViewById(R.id.LawDateText);
 
-        /*/設定字型
+       //設定字型
         Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         CompanyName.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         Detail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         Law.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        LawDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));*/
+        LawDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
 
         //將值放入UI
         Title.setText(titlestring);
