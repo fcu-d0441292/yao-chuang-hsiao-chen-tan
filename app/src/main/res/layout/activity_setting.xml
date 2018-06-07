@@ -22,14 +22,23 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="-1dp">
 
-        <EditText
-            android:id="@+id/title_editText2"
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:text="⊙關於我們⊙"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="設定 "
-            android:textSize="25sp" />
+            android:padding="10dp"
+            android:text="∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,29 +49,77 @@
                 android:id="@+id/version_textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="版本"
+                android:text="⊙版本⊙ "
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V1.0"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/according_textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="參考資料"
+                android:padding="10dp"
+                android:text="⊙參考資料⊙"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_datasource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="政府開放平台"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/engineer_textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="開發人員"
+                android:padding="10dp"
+                android:text="⊙開發人員⊙"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_engineer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="謝淳宇\n曾弘軒\n黃信銓"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/question_textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="常見問題"
+                android:padding="10dp"
+                android:text="⊙感謝⊙"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_thank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="123456789"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
+
         </LinearLayout>
     </LinearLayout>
 
