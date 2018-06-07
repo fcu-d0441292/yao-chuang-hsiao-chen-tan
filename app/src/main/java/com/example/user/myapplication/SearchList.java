@@ -131,6 +131,14 @@ public class SearchList extends ListActivity {
         ArrayList<String> albumList = new ArrayList<String>();
 
 
+        //在這裡將JSON的資料放進資料庫
+        /*
+                     for(i=5;  i<JSON資料數; i++){
+                      Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
+                     itemDAO.insert(item);
+                     }
+               */
+
         //獲得DataBase所有資料
         item = itemDAO.getAll();
 

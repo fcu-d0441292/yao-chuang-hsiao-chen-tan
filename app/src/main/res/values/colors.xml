@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#6790ff</color>
-    <color name="colorPrimaryDark">#a5aff0</color>
+    <color name="colorPrimaryDark">#7484ed</color>
     <color name="colorAccent">#e1dede</color>
     <color name="ListViewBackGround">#00feffe0</color>
 </resources>
