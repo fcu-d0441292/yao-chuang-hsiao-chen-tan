@@ -19,7 +19,7 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        //UI綁定
+        //UI綁定=
         tv_version = (TextView)findViewById(R.id.tv_version);
         tv_datasource = (TextView)findViewById(R.id.tv_datasource);
         tv_engineer = (TextView)findViewById(R.id.tv_engineer);
