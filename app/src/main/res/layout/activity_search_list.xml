@@ -45,6 +45,8 @@
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="485dp"
+            android:divider="#7484ED"
+            android:dividerHeight="2px"
             android:background="@color/ListViewBackGround" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -16,71 +16,125 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="383dp"
-        android:layout_height="515dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-2dp">
+        android:layout_width="381dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="47dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_weight="1"
-                android:text="✎"
-                android:textAlignment="center"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/SerachInput"
-                android:layout_width="275dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="輸入產品名稱..."
-                android:inputType="textPersonName"
-                android:textAlignment="viewStart" />
-
             <Button
-                android:id="@+id/ok_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/backbutton"
+                android:layout_width="75dp"
+                android:layout_height="26dp"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttonshape"
-                android:shadowColor="#A8A8A8"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:shadowColor="@android:color/transparent"
+
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="5"
-                android:text="OK"
-                android:textColor="@android:color/background_light" />
+                android:text="   ＜返回"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorPrimaryDark" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="206dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/DelRecordButton"
+                android:layout_width="101dp"
+                android:layout_height="27dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="@android:color/transparent"
+
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:text="清除歷史記錄"
+                android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/DelRecordButton"
-            android:layout_width="101dp"
-            android:layout_height="37dp"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:text="清除歷史記錄"
-            android:textColor="@android:color/background_light" />
-
-        <ListView
-            android:id="@android:id/list"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/ListViewBackGround">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-2dp">
 
-        </ListView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="✎"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="24sp" />
+
+                <com.example.user.myapplication.ClearEditText
+                    android:id="@+id/SerachInput"
+                    android:layout_width="236dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="輸入產品名稱..."
+                    android:inputType="textPersonName"
+                    android:textAlignment="viewStart" />
+
+                <Button
+                    android:id="@+id/ok_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonshape"
+                    android:shadowColor="@android:color/transparent"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="0"
+                    android:text="OK"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="歷史記錄"
+                android:textAlignment="center" />
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#7484ED"
+                android:dividerHeight="2px"
+                android:background="@color/ListViewBackGround">
+
+            </ListView>
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -21,6 +21,7 @@ public class SearchActivity extends ListActivity {
     private EditText input;
     private Button okbutton;
     private Button DelButton;
+    private Button BackButton;
 
     //查詢記錄
     private String[] RecordString = new String[]{"Record1","Record2","Record3","Record4","Record5","Record6","Record7","Record8","Record9","Record10"};
@@ -36,6 +37,7 @@ public class SearchActivity extends ListActivity {
         input = (EditText)findViewById(R.id.SerachInput);
         okbutton = (Button)findViewById(R.id.ok_button);
         DelButton = (Button)findViewById(R.id.DelRecordButton);
+        BackButton = (Button)findViewById(R.id.backbutton);
 
         //okbutton功能===========================================================================================================
         okbutton.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +88,20 @@ public class SearchActivity extends ListActivity {
 
         }); //DelButton功能============================================================================================================
 
-        //取得查詢資料===========================================================================================================
+        //BackButton功能===========================================================================================================
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //傳送出去的值
+                Intent intent = new Intent();
+                intent.setClass(SearchActivity.this,MainActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
+                startActivity(intent);                                 //執行切換
+                finish();
+            }
+
+        }); //BackButton功能============================================================================================================
+
+        //取得查詢記錄===========================================================================================================
         ArrayList<String> albumList = new ArrayList<String>();
         SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
         RecordNumber =  settings.getInt("RecordNumber",0);
