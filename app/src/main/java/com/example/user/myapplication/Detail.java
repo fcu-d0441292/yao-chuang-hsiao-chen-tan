@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import net.macdidi.myandroidtutorial.Item;
@@ -16,7 +18,9 @@ import java.util.List;
 
 public class Detail extends AppCompatActivity {
 
-    //private TextView Name;
+
+    private Button BackButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,7 @@ public class Detail extends AppCompatActivity {
         TextView Detail = (TextView)findViewById(R.id.DetailText);
         TextView Law = (TextView)findViewById(R.id.LawText);
         TextView LawDate = (TextView)findViewById(R.id.LawDateText);
+        BackButton = (Button)findViewById(R.id.BackButton_Detail);
 
        //設定字型
         Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
@@ -51,6 +56,18 @@ public class Detail extends AppCompatActivity {
         Detail.setText(Detailstring);
         Law.setText(Lawstring);
         LawDate.setText(LawDatestring);
+
+        //BackButton功能===========================================================================================================
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                onBackPressed();
+                finish();
+            }
+
+        }); //BackButton功能============================================================================================================
 
      /*
          Name = (TextView)findViewById(R.id.NametextView);

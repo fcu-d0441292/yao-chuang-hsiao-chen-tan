@@ -21,6 +21,23 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <Button
+            android:id="@+id/BackButton_list"
+            android:layout_width="67dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/buttonshape"
+            android:padding="0dp"
+            android:paddingLeft="0dp"
+
+            android:shadowColor="@android:color/transparent"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="   ＜返回"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimaryDark" />
+
         <TextView
             android:id="@+id/NotFindText"
             android:layout_width="match_parent"

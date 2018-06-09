@@ -7,11 +7,14 @@ import android.content.Intent;
 import org.json.*;
 import org.w3c.dom.Text;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -40,6 +43,9 @@ public class SearchList extends ListActivity {
     private boolean FindSomething = false; //有無找到資料 true:有找到 false:沒找到
     private TextView NotFindText;
     private ImageView NotFind;
+    private Button BackButton;
+
+
     //按下查詢結果**************************************************************************
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -121,8 +127,24 @@ public class SearchList extends ListActivity {
 
 
         NotFindText  = (TextView)findViewById(R.id.NotFindText);
+        BackButton = (Button)findViewById(R.id.BackButton_list);
+
+        //BackButton功能===========================================================================================================
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //傳送出去的值
+                Intent intent = new Intent();
+                intent.setClass(SearchList.this,SearchActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
+                startActivity(intent);                                 //執行切換
+                finish();
+            }
+
+        }); //BackButton功能============================================================================================================
+
 
         getdata();
+
         // 如果資料庫是空的，就建立一些範例資料
         // 這是為了方便測試用的，完成應用程式以後可以拿掉
         ItemDAO itemDAO = new ItemDAO(getApplicationContext());
@@ -148,7 +170,9 @@ public class SearchList extends ListActivity {
         boolean Find = false;      //是否包含 true:包含 false:未包含
         //獲取SearchActivity傳送的值
         Intent intent = getIntent();
-        String TitleName =intent.getStringExtra("KEY_Input");    //包含的字
+
+        String TitleName = intent.getStringExtra("KEY_Input");    //包含的字
+
        // item.get(0).setTitle("潤膚霜");
        // item.get(0).setCompanyName("東海公司");
        // itemDAO.update(item.get(0));
@@ -189,4 +213,9 @@ public class SearchList extends ListActivity {
 
 
     }
+
+
+
+
+
 }

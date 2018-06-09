@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -101,6 +102,8 @@ public class SearchActivity extends ListActivity {
 
         }); //BackButton功能============================================================================================================
 
+
+
         //取得查詢記錄===========================================================================================================
         ArrayList<String> albumList = new ArrayList<String>();
         SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
@@ -150,5 +153,20 @@ public class SearchActivity extends ListActivity {
 
     }//按下搜尋記錄*************************************************************************************************************************
 
+
+    //實體返回健===========================================================================================================
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 攔截返回鍵
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //傳送出去的值
+            Intent intent = new Intent();
+            intent.setClass(SearchActivity.this,MainActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
+            startActivity(intent);                                 //執行切換
+            finish();
+        }
+        return true;
+    }
+    //實體返回健===========================================================================================================
 
 }//class結束*****************************************************************************************************************************************
