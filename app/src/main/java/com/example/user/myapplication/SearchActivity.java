@@ -1,9 +1,11 @@
+//搜尋頁面
 package com.example.user.myapplication;
 
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -40,32 +42,40 @@ public class SearchActivity extends ListActivity {
         DelButton = (Button)findViewById(R.id.DelRecordButton);
         BackButton = (Button)findViewById(R.id.backbutton);
 
+
+
         //okbutton功能===========================================================================================================
         okbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String Name = input.getText().toString();
 
-                //存入查詢記錄
-                SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString(RecordString[NowNumber], input.getText().toString());
+                //有輸入名稱
+                if(Name.length()>=1) {
+                    //存入查詢記錄
+                    SharedPreferences settings = getSharedPreferences("PREF", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString(RecordString[NowNumber], input.getText().toString());
 
-                RecordNumber = RecordNumber + 1;
-                if(RecordNumber>=10) RecordNumber = 10;
-                NowNumber = NowNumber + 1;
-                if(NowNumber>=10) NowNumber = 0;
-                editor.putInt("RecordNumber" , RecordNumber);
-                editor.putInt("NowNumber" , NowNumber);
-                editor.commit();//要記得加
+                    RecordNumber = RecordNumber + 1;
+                    if (RecordNumber >= 10) RecordNumber = 10;
+                    NowNumber = NowNumber + 1;
+                    if (NowNumber >= 10) NowNumber = 0;
+                    editor.putInt("RecordNumber", RecordNumber);
+                    editor.putInt("NowNumber", NowNumber);
+                    editor.commit();//要記得加
 
-                //傳送出去的值
-                Intent intent = new Intent();
-                intent.setClass(SearchActivity.this,SearchList.class); //切換頁面(從SearchActivity 切換到 SearchList )
+                    //傳送出去的值
+                    Intent intent = new Intent();
+                    intent.setClass(SearchActivity.this, SearchList.class); //切換頁面(從SearchActivity 切換到 SearchList )
 
-                intent.putExtra("KEY_Input", Name);           //傳送到SearchList 的內容
-                input.setText("");                                     //設定輸入欄為空白，防止切換回SearchActivity時有前次搜尋
-                startActivity(intent);                                 //執行切換
+                    intent.putExtra("KEY_Input", Name);           //傳送到SearchList 的內容
+                    input.setText("");                                     //設定輸入欄為空白，防止切換回SearchActivity時有前次搜尋
+                    startActivity(intent);                                 //執行切換
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+                }
+                //沒有輸入名稱
+                else Toast.makeText(SearchActivity.this, "請輸入產品名稱。", Toast.LENGTH_SHORT).show();
 
             }
         }); //okbutton功能===========================================================================================================
@@ -97,6 +107,7 @@ public class SearchActivity extends ListActivity {
                 Intent intent = new Intent();
                 intent.setClass(SearchActivity.this,MainActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
                 startActivity(intent);                                 //執行切換
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
                 finish();
             }
 
@@ -150,7 +161,7 @@ public class SearchActivity extends ListActivity {
 
         intent.putExtra("KEY_Input", Name);           //傳送到SearchList 的內容
         startActivity(intent);                                 //執行切換
-
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
     }//按下搜尋記錄*************************************************************************************************************************
 
 
@@ -162,7 +173,8 @@ public class SearchActivity extends ListActivity {
             //傳送出去的值
             Intent intent = new Intent();
             intent.setClass(SearchActivity.this,MainActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
-            startActivity(intent);                                 //執行切換
+            startActivity(intent);                                      //執行切換
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
             finish();
         }
         return true;

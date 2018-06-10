@@ -36,7 +36,7 @@
             android:shadowRadius="5"
             android:text="   ＜返回"
             android:textAlignment="textStart"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@drawable/button_text_color" />
 
         <TextView
             android:id="@+id/NotFindText"

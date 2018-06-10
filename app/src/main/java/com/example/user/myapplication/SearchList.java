@@ -12,6 +12,7 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -79,6 +80,7 @@ public class SearchList extends ListActivity {
         intent.putExtra("KEY_Law", Law);           //傳送到Detail的內容
         intent.putExtra("KEY_LawDate", LawDate);       //傳送到Detail的內容
         startActivity(intent);//執行切換
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
     }
   //按下查詢結果結束******************************************************************************************/
 
@@ -137,6 +139,7 @@ public class SearchList extends ListActivity {
                 Intent intent = new Intent();
                 intent.setClass(SearchList.this,SearchActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
                 startActivity(intent);                                 //執行切換
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
                 finish();
             }
 
@@ -214,7 +217,21 @@ public class SearchList extends ListActivity {
 
     }
 
-
+    //實體返回健===========================================================================================================
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 攔截返回鍵
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            //傳送出去的值
+            Intent intent = new Intent();
+            intent.setClass(SearchList.this,SearchActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
+            startActivity(intent);                                      //執行切換
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+            finish();
+        }
+        return true;
+    }
+    //實體返回健===========================================================================================================
 
 
 

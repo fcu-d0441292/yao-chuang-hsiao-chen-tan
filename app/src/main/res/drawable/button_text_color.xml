@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-->未按下按鈕<-->
+    <item android:state_pressed="false"
+        android:color="#FF7484ED"
+    />
+
+    <!-->按下按鈕<-->
+    <item android:state_pressed="true"
+        android:color="#FFFFFFFF"
+        />
+
+</selector>

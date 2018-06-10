@@ -37,7 +37,7 @@
             android:shadowRadius="5"
             android:text="   ＜返回"
             android:textAlignment="textStart"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@drawable/button_text_color" />
 
         <TextView
             android:id="@+id/TitleText"
@@ -79,7 +79,7 @@
             android:padding="5dp"
             android:text="⊙違反情節⊙"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@android:color/holo_red_light"
             android:textStyle="bold" />
 
         <TextView
