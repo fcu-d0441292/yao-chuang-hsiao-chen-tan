@@ -163,7 +163,7 @@ public class SearchList extends ListActivity {
 
         //在這裡將JSON的資料放進資料庫(藥品)
         /*
-                     for(i=5;  i<JSON資料數; i++){
+                     for(int i=5;  i<JSON資料數; i++){
                       Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
                      itemDAO.insert(item);
                      }
@@ -172,11 +172,11 @@ public class SearchList extends ListActivity {
 
         //在這裡將JSON的資料放進資料庫(化妝品)
         /*
-                     for(i=5;  i<JSON資料數; i++){
-                      Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
-                     itemDAO.insert(item);
+                     for(int j=5;  j<JSON資料數; j++){
+                      Item item = new Item(j, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
+                     itemDAOCos.insert(item);
                      }
-               */
+                */
 
         //獲得DataBase所有資料(藥品)
         item = itemDAO.getAll();
