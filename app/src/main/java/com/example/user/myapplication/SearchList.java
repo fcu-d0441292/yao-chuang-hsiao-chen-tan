@@ -38,7 +38,7 @@ public class SearchList extends ListActivity {
 
     JSONObject data;
     List<Item> item = new  ArrayList<Item>();
-    int [] AllNumber = new int[100];
+    int [] AllNumber = new int[10000];
     int Count = 0;
 
     private boolean FindSomething = false; //有無找到資料 true:有找到 false:沒找到
@@ -55,17 +55,6 @@ public class SearchList extends ListActivity {
 
 
         //打入資料的內容(產品名稱  , 公司名稱 , 違反情節 , 處分法條 , 處罰日期 )
-
-      /*  switch(position) {
-            case 0:
-                title = item.get(0 + AllNumber[0]).getTitle();
-                CompanyName = item.get(0 + AllNumber[0]).getCompanyName();
-                Detail = item.get(0 + AllNumber[0]).getDetail();
-                Law = item.get(0 + AllNumber[0]).getLaw();
-                LawDate = item.get(0 + AllNumber[0]).getLawDate();
-                break;
-        }*/
-
         title = item.get( position + AllNumber[position]).getTitle();
         CompanyName = item.get(position + AllNumber[position]).getCompanyName();
         Detail = item.get(position + AllNumber[position]).getDetail();
@@ -148,17 +137,31 @@ public class SearchList extends ListActivity {
 
         getdata();
 
-        // 如果資料庫是空的，就建立一些範例資料
-        // 這是為了方便測試用的，完成應用程式以後可以拿掉
-        ItemDAO itemDAO = new ItemDAO(getApplicationContext());
 
-       if (itemDAO.getCount() == 0) {
-           itemDAO.sample();
-        }
+
+
+            //(藥品)===============================================================================================================================================
+            // 如果資料庫是空的，就建立一些範例資料
+            // 這是為了方便測試用的，完成應用程式以後可以拿掉
+            ItemDAO itemDAO = new ItemDAO(getApplicationContext());
+
+            if (itemDAO.getCount() == 0) {
+                itemDAO.sample();
+            }
+
+
+            //(化妝品)===============================================================================================================================================
+            ItemDAO itemDAOCos = new ItemDAO(getApplicationContext());
+
+            if (itemDAOCos.getCount() == 0) {
+                itemDAOCos.sample();
+            }
+
+
         ArrayList<String> albumList = new ArrayList<String>();
 
 
-        //在這裡將JSON的資料放進資料庫
+        //在這裡將JSON的資料放進資料庫(藥品)
         /*
                      for(i=5;  i<JSON資料數; i++){
                       Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
@@ -166,51 +169,73 @@ public class SearchList extends ListActivity {
                      }
                */
 
-        //獲得DataBase所有資料
+
+        //在這裡將JSON的資料放進資料庫(化妝品)
+        /*
+                     for(i=5;  i<JSON資料數; i++){
+                      Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
+                     itemDAO.insert(item);
+                     }
+               */
+
+        //獲得DataBase所有資料(藥品)
         item = itemDAO.getAll();
+
+        //獲得DataBase所有資料(化妝品)
+        item = itemDAOCos.getAll();
 
         //(需完成)找出符合資料
         boolean Find = false;      //是否包含 true:包含 false:未包含
         //獲取SearchActivity傳送的值
         Intent intent = getIntent();
-
         String TitleName = intent.getStringExtra("KEY_Input");    //包含的字
 
-       // item.get(0).setTitle("潤膚霜");
-       // item.get(0).setCompanyName("東海公司");
-       // itemDAO.update(item.get(0));
-        //開始搜尋
-        for(int i=0; i<itemDAO.getCount(); i++){
-          if(item.get(i).getTitle().indexOf(TitleName) != -1 ) Find = true; //有找出是否包含字
-           else Find = false; //沒有找出是否包含字
+        if(SearchActivity.classification==1) {
+            //開始搜尋(藥品)
+            for (int i = 0; i < itemDAO.getCount(); i++) {
+                if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
+                else Find = false; //沒有找出是否包含字
 
-           //依照上面結果放入ListView
-            if(Find){
-                //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
-                albumList.add(item.get(i).getTitle());
-                Find = false;
-                FindSomething = true;
-                AllNumber[Count] = i-Count;
-                Count = Count + 1;
+                //依照上面結果放入ListView
+                if (Find) {
+                    //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
+                    albumList.add(item.get(i).getTitle());
+                    Find = false;
+                    FindSomething = true;
+                    AllNumber[Count] = i - Count;
+                    Count = Count + 1;
+                }
+
+            }
+        }
+        else {
+            //開始搜尋(化妝品)
+            for (int i = 0; i < itemDAOCos.getCount(); i++) {
+                if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
+                else Find = false; //沒有找出是否包含字
+
+                //依照上面結果放入ListView
+                if (Find) {
+                    //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
+                    albumList.add(item.get(i).getTitle());
+                    Find = false;
+                    FindSomething = true;
+                    AllNumber[Count] = i - Count;
+                    Count = Count + 1;
+                }
             }
 
         }
 
 
-        //System.out.print(item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() );
-        //albumList.add("SK-II保濕霜");
-        //albumList.add("ARJ防曬乳");
+
         NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         if(FindSomething){
             NotFindText.setText("⊙以下為符合的資料⊙");
         }
         else NotFindText.setText("⊙沒找到任何資料⊙");
 
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, albumList);
-       // ArrayAdapter<String>  adapter = new ArrayAdapter<String>(this, R.layout.listitem, R.id.tv_listitem, albumList);
-
         setListAdapter(adapter);
 
 
