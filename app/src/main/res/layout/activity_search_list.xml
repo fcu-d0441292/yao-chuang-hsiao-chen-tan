@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/SearchListImage"
-        android:layout_width="401dp"
+        android:layout_width="381dp"
         android:layout_height="513dp"
         android:scaleType="center"
         android:src="@drawable/imageback"
         tools:layout_editor_absoluteX="-8dp" />
 
     <LinearLayout
-        android:layout_width="407dp"
-        android:layout_height="509dp"
+        android:layout_width="381dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
@@ -41,8 +41,10 @@
         <TextView
             android:id="@+id/NotFindText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_height="29dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/buttonshape"
             android:text="⊙以下為符合的資料⊙"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
@@ -53,7 +55,6 @@
             android:id="@+id/Middle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞∞"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
@@ -61,9 +62,9 @@
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
-            android:layout_height="485dp"
+            android:layout_height="match_parent"
+            android:background="@color/ListViewBackGround"
             android:divider="#7484ED"
-            android:dividerHeight="2px"
-            android:background="@color/ListViewBackGround" />
+            android:dividerHeight="2px" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

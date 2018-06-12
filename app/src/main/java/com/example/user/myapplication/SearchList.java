@@ -229,7 +229,7 @@ public class SearchList extends ListActivity {
 
 
 
-        NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        //NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
         if(FindSomething){
             NotFindText.setText("⊙以下為符合的資料⊙");
         }
