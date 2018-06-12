@@ -71,7 +71,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="446dp"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="-2dp">
@@ -131,13 +131,20 @@
                 android:id="@android:id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/ListViewBackGround"
                 android:divider="#7484ED"
-                android:dividerHeight="2px"
 
-                android:background="@color/ListViewBackGround">
+                android:dividerHeight="2px">
 
             </ListView>
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/triangle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/triangle1" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
