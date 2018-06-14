@@ -1,6 +1,7 @@
 package com.example.user.myapplication;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import net.macdidi.myandroidtutorial.Item;
 import net.macdidi.myandroidtutorial.ItemDAO;
 
+import org.w3c.dom.Text;
+
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private ImageButton medicine;
     private ImageButton cosmetic;
+    private ImageButton setbutton;
+    private TextView MedText;
+    private TextView CosText;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,13 +59,20 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         medicine=findViewById(R.id.bt_medicine);
         cosmetic=findViewById(R.id.bt_cosmetic);
+        setbutton=findViewById(R.id.set_button);
+        MedText = (TextView) findViewById(R.id.MedtextView);
+        CosText = (TextView) findViewById(R.id.CostextView);
+        //MedText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/pingfang.ttf"));
+        //CosText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/pingfang.ttf"));
 
         View.OnClickListener bt_medicine=new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(MainActivity.this,SearchList.class);
+                intent.setClass(MainActivity.this,SearchActivity.class);
+                SearchActivity.classification = 1;
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
             }
         } ;
         medicine.setOnClickListener((bt_medicine));
@@ -68,11 +81,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
-                intent.setClass(MainActivity.this,SearchList.class);
+                intent.setClass(MainActivity.this,SearchActivity.class);
+                SearchActivity.classification = 2;
                 startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
             }
         } ;
         cosmetic.setOnClickListener((bt_cosmetic));
+
+        View.OnClickListener set_button=new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,Setting.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+            }
+        } ;
+        setbutton.setOnClickListener((set_button));
 
 
     }

@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan\app\app.iml" filepath="C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan\app\app.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\app\app.iml" filepath="C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/yao-chuang-hsiao-chen-tan.iml" filepath="$PROJECT_DIR$/yao-chuang-hsiao-chen-tan.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan.iml" filepath="C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan.iml" />
+      <module fileurl="file://C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan.iml" filepath="C:\Users\user\AndroidStudioProjects\yao-chuang-hsiao-chen-tan\yao-chuang-hsiao-chen-tan.iml" />
     </modules>
   </component>
 </project>
