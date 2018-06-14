@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class SearchActivity extends ListActivity {
 
     //全域變數 藥品:1  化妝品:2
-    public static int classification = 1;
+    public static int classification = 2;
 
     //宣告UI
     private EditText input;

@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,8 +36,8 @@ import java.util.Date;
 import java.util.List;
 
 public class SearchList extends ListActivity {
-
-    JSONObject data;
+    JSONArray resultMedicineArray;
+    JSONArray resultCosmeticArray;
     List<Item> item = new  ArrayList<Item>();
     int [] AllNumber = new int[10000];
     int Count = 0;
@@ -73,7 +74,7 @@ public class SearchList extends ListActivity {
     }
   //按下查詢結果結束******************************************************************************************/
 
-    public  void getdata(){
+    public  void GetMedicineData(){
         try {
             InputStream is = this.getAssets().open("156_3.json");
             BufferedReader bufr = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -86,19 +87,36 @@ public class SearchList extends ListActivity {
             bufr.close();
 
             try {
-                JSONArray resultArray  =new JSONArray(builder.toString());
-                JSONArray Array=resultArray.getJSONArray(0);
-                data = Array.getJSONObject(0);
-                System.out.println("違規產品名稱="+ data.getString("違規產品名稱") );
-               /* System.out.println("cat="+ data.getString("cat") );
-                JSONArray array = data.getJSONArray("languages");
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject lan = array.getJSONObject(i);
-                    System.out.println("-----------------------");
-                    System.out.println("id="+lan.getInt("id"));
-                    System.out.println("ide="+lan.getString("ide"));
-                    System.out.println("name="+lan.getString("name"));
-                }*/
+                resultMedicineArray  =new JSONArray(builder.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public  void GetCosmeticData(){
+        try {
+            InputStream is = this.getAssets().open("158_3.json");
+            BufferedReader bufr = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String line ;
+            StringBuilder builder = new StringBuilder();
+            while((line = bufr.readLine()) != null){
+                builder.append(line);
+            }
+            is.close();
+            bufr.close();
+
+            try {
+                resultCosmeticArray  =new JSONArray(builder.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -110,6 +128,54 @@ public class SearchList extends ListActivity {
             e.printStackTrace();
         }
     }
+
+    public void StoreData(ItemDAO itemDAO,JSONArray resultArray){
+        if (itemDAO.getCount() == 0) {
+            itemDAO.sample();
+            JSONObject data;
+            JSONArray medicineArray;
+            String title="查無資料";
+            String CompanyName="查無資料";
+            String Detail="查無資料";
+            String Law="查無資料";
+            String LawData="查無資料";
+            //Log.v("ssss","fafsodfjsd");
+            //int a=resultArray.length();
+            //Log.v("sabe",Integer.toString(a) );
+            for(int i=5;  i<resultArray.length()+5; i++){
+                try{
+                    medicineArray=resultArray.getJSONArray(i-5);
+                    data=medicineArray.getJSONObject(0);
+                    title=data.getString("違規產品名稱");
+                    //Log.v("title",title);
+
+                    data=medicineArray.getJSONObject(1);
+                    CompanyName=data.getString("違規廠商名稱或負責人");
+                    //Log.v("CompanyName",CompanyName);
+
+                    data=medicineArray.getJSONObject(5);
+                    Detail=data.getString("違規情節");
+                    //Log.v("Detail",Detail);
+
+                    data=medicineArray.getJSONObject(9);
+                    Law=data.getString("查處情形");
+                    //Log.v("Law",Law);
+
+                    data=medicineArray.getJSONObject(3);
+                    LawData=data.getString("處分日期");
+                    //Log.v("LawData",LawData);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Item item = new Item(i, new Date().getTime(), title , CompanyName , Detail , Law , LawData);
+                itemDAO.insert(item);
+            }
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,64 +201,60 @@ public class SearchList extends ListActivity {
         }); //BackButton功能============================================================================================================
 
 
-        getdata();
 
 
 
 
-            //(藥品)===============================================================================================================================================
-            // 如果資料庫是空的，就建立一些範例資料
-            // 這是為了方便測試用的，完成應用程式以後可以拿掉
-            ItemDAO itemDAO = new ItemDAO(getApplicationContext());
-
-            if (itemDAO.getCount() == 0) {
-                itemDAO.sample();
-            }
+        //(藥品)===============================================================================================================================================
+        // 如果資料庫是空的，就建立一些範例資料
+        // 這是為了方便測試用的，完成應用程式以後可以拿掉
+        GetMedicineData();
+        ItemDAO itemDAO = new ItemDAO(getApplicationContext());
+        StoreData(itemDAO,resultMedicineArray);
 
 
-            //(化妝品)===============================================================================================================================================
-            ItemDAO itemDAOCos = new ItemDAO(getApplicationContext());
+        //(化妝品)===============================================================================================================================================
+        GetCosmeticData();
+        ItemDAO itemDAOCos = new ItemDAO(getApplicationContext());
+        StoreData(itemDAOCos,resultCosmeticArray);
 
-            if (itemDAOCos.getCount() == 0) {
-                itemDAOCos.sample();
-            }
+
+        if (itemDAOCos.getCount() == 0) {
+            itemDAOCos.sample();
+        }
 
 
         ArrayList<String> albumList = new ArrayList<String>();
 
 
-        //在這裡將JSON的資料放進資料庫(藥品)
-        /*
-                     for(int i=5;  i<JSON資料數; i++){
-                      Item item = new Item(i, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
-                     itemDAO.insert(item);
-                     }
-               */
-
-
-        //在這裡將JSON的資料放進資料庫(化妝品)
-        /*
-                     for(int j=5;  j<JSON資料數; j++){
-                      Item item = new Item(j, new Date().getTime(), "潤膚霜" , "東海公司" , "成分標示不清" , "消保法" , "2018/5/14");
-                     itemDAOCos.insert(item);
-                     }
-                */
 
         //獲得DataBase所有資料(藥品)
-        item = itemDAO.getAll();
-
+        if(SearchActivity.classification==1) item = itemDAO.getAll();
+        else item = itemDAOCos.getAll();
+        //Log.v("s",item.get(6).getTitle());
+        //System.out.print(item.get(5).getTitle());
         //獲得DataBase所有資料(化妝品)
-        item = itemDAOCos.getAll();
 
         //(需完成)找出符合資料
         boolean Find = false;      //是否包含 true:包含 false:未包含
         //獲取SearchActivity傳送的值
         Intent intent = getIntent();
         String TitleName = intent.getStringExtra("KEY_Input");    //包含的字
-
+        //int d= itemDAOCos.getCount();
+        //Log.v("CC",Integer.toString(d));
+        /*for (int i = 0; i < d; i++) {
+           // if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
+            //else Find = false; //沒有找出是否包含
+           // if (Find) {
+                itemDAOCos.delete(i);
+            //}
+        }*/
+        String a=Integer.toString(itemDAO.getCount());
         if(SearchActivity.classification==1) {
             //開始搜尋(藥品)
-            for (int i = 0; i < itemDAO.getCount(); i++) {
+            int len=itemDAO.getCount();
+            for (int i = 0; i < len; i++) {
+                //Log.v("caca",Integer.toString(i));
                 if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
                 else Find = false; //沒有找出是否包含字
 
@@ -210,7 +272,8 @@ public class SearchList extends ListActivity {
         }
         else {
             //開始搜尋(化妝品)
-            for (int i = 0; i < itemDAOCos.getCount(); i++) {
+            int len=itemDAOCos.getCount();
+            for (int i = 0; i < len; i++) {
                 if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
                 else Find = false; //沒有找出是否包含字
 
