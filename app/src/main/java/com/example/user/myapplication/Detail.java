@@ -26,7 +26,7 @@ public class Detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        getSupportActionBar().hide();//隱藏標題
+        getSupportActionBar().hide();//隱藏標題題
 
         //獲取SearchList傳送的值
         Intent intent = getIntent();
