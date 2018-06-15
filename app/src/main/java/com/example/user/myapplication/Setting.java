@@ -16,6 +16,7 @@ public class Setting extends AppCompatActivity {
     private TextView tv_datasource;
     private TextView tv_engineer;
     private TextView tv_thank;
+    private TextView tv_setting;
     private Button BackButton;
 
     @Override
@@ -28,14 +29,15 @@ public class Setting extends AppCompatActivity {
         tv_datasource = (TextView)findViewById(R.id.tv_datasource);
         tv_engineer = (TextView)findViewById(R.id.tv_engineer);
         tv_thank = (TextView)findViewById(R.id.tv_thank);
+        tv_setting = (TextView)findViewById(R.id.settingtext);
         BackButton = (Button)findViewById(R.id.backbutton);
 
         //設定字形
-        tv_version.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        tv_datasource.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        tv_engineer.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        tv_thank.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-
+        tv_version.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        tv_datasource.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        tv_engineer.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        tv_thank.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        tv_setting.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         //BackButton功能===========================================================================================================
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
