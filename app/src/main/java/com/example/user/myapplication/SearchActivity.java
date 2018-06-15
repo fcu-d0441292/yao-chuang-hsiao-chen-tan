@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class SearchActivity extends ListActivity {
     private Button okbutton;
     private Button DelButton;
     private Button BackButton;
+    private TextView historytext;
 
     //查詢記錄(藥品)
     private String[] RecordString = new String[]{"Record1","Record2","Record3","Record4","Record5","Record6","Record7","Record8","Record9","Record10"};
@@ -48,9 +51,13 @@ public class SearchActivity extends ListActivity {
         //UI綁定
         input = (EditText)findViewById(R.id.SerachInput);
         okbutton = (Button)findViewById(R.id.ok_button);
+        okbutton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         DelButton = (Button)findViewById(R.id.DelRecordButton);
+        DelButton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         BackButton = (Button)findViewById(R.id.backbutton);
-
+        BackButton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        historytext = (TextView)findViewById(R.id.historytextview);
+        historytext.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
 
         //設定EditText的hint
         if(classification==1) input.setHint("輸入藥品名稱...");

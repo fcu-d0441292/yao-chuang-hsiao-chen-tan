@@ -118,14 +118,15 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/historytextview"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="23dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/buttonshape"
-                android:text="歷史記錄"
+                android:background="@drawable/out_line"
+                android:paddingTop="3dp"
+                android:text="⊙歷史記錄⊙"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/background_dark"
                 android:textSize="14sp" />
 
             <ListView

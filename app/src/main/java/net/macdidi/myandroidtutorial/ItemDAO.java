@@ -38,10 +38,11 @@ public class ItemDAO {
 
     // 資料庫物件
     private SQLiteDatabase db;
-
+    private SQLiteDatabase db2;
     // 建構子，一般的應用都不需要修改
     public ItemDAO(Context context) {
         db = MyDBHelper.getDatabase(context);
+        db2  = MyDBHelper.getDatabase(context);
     }
 
     // 關閉資料庫，一般的應用都不需要修改

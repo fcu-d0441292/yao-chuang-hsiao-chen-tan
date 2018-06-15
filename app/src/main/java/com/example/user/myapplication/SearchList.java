@@ -75,6 +75,7 @@ public class SearchList extends ListActivity {
   //按下查詢結果結束******************************************************************************************/
 
     public  void GetMedicineData(){
+        Log.v("MedicineDAta","ss");
         try {
             InputStream is = this.getAssets().open("156_3.json");
             BufferedReader bufr = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -104,6 +105,7 @@ public class SearchList extends ListActivity {
 
 
     public  void GetCosmeticData(){
+        Log.v("CosmetDAta","as");
         try {
             InputStream is = this.getAssets().open("158_3.json");
             BufferedReader bufr = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -129,7 +131,7 @@ public class SearchList extends ListActivity {
         }
     }
 
-    public void StoreData(ItemDAO itemDAO,JSONArray resultArray){
+    public void StoreData(ItemDAO itemDAO,JSONArray resultArray,JSONArray resultArray2){
         if (itemDAO.getCount() == 0) {
             itemDAO.sample();
             JSONObject data;
@@ -146,25 +148,29 @@ public class SearchList extends ListActivity {
                 try{
                     medicineArray=resultArray.getJSONArray(i-5);
                     data=medicineArray.getJSONObject(0);
-                    title=data.getString("違規產品名稱");
+                    if(data.getString("違規產品名稱").length()!=0)title=data.getString("違規產品名稱");
+                    else title = "查無資料";
                     //Log.v("title",title);
 
                     data=medicineArray.getJSONObject(1);
-                    CompanyName=data.getString("違規廠商名稱或負責人");
+                    if(data.getString("違規廠商名稱或負責人").length()!=0)CompanyName=data.getString("違規廠商名稱或負責人");
+                    else CompanyName = "查無資料";
                     //Log.v("CompanyName",CompanyName);
 
                     data=medicineArray.getJSONObject(5);
-                    Detail=data.getString("違規情節");
+                    if(data.getString("違規情節").length()!=0) Detail=data.getString("違規情節");
+                    else Detail = "查無資料";
                     //Log.v("Detail",Detail);
 
                     data=medicineArray.getJSONObject(9);
-                    Law=data.getString("查處情形");
+                    if(data.getString("查處情形").length()!=0) Law=data.getString("查處情形");
+                    else Law = "查無資料";
                     //Log.v("Law",Law);
 
                     data=medicineArray.getJSONObject(3);
-                    LawData=data.getString("處分日期");
+                    if(data.getString("處分日期").length()!=0) LawData = data.getString("處分日期");
+                    else LawData = "查無資料";
                     //Log.v("LawData",LawData);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,6 +178,41 @@ public class SearchList extends ListActivity {
                 Item item = new Item(i, new Date().getTime(), title , CompanyName , Detail , Law , LawData);
                 itemDAO.insert(item);
             }
+            for(int i=resultArray.length()+5;  i<resultArray2.length()+resultArray.length()+5; i++){
+                try{
+                    medicineArray=resultArray2.getJSONArray(i-5);
+                    data=medicineArray.getJSONObject(0);
+                    if(data.getString("違規產品名稱").length()!=0)title=data.getString("違規產品名稱");
+                    else title = "查無資料";
+                    //Log.v("title",title);
+
+                    data=medicineArray.getJSONObject(1);
+                    if(data.getString("違規廠商名稱或負責人").length()!=0)CompanyName=data.getString("違規廠商名稱或負責人");
+                    else CompanyName = "查無資料";
+                    //Log.v("CompanyName",CompanyName);
+
+                    data=medicineArray.getJSONObject(5);
+                    if(data.getString("違規情節").length()!=0) Detail=data.getString("違規情節");
+                    else Detail = "查無資料";
+                    //Log.v("Detail",Detail);
+
+                    data=medicineArray.getJSONObject(9);
+                    if(data.getString("查處情形").length()!=0) Law=data.getString("查處情形");
+                    else Law = "查無資料";
+                    //Log.v("Law",Law);
+
+                    data=medicineArray.getJSONObject(3);
+                    if(data.getString("處分日期").length()!=0) LawData = data.getString("處分日期");
+                    else LawData = "查無資料";
+                    //Log.v("LawData",LawData);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Item item = new Item(i, new Date().getTime(), title , CompanyName , Detail , Law , LawData);
+                itemDAO.insert(item);
+            }
+
         }
     }
 
@@ -185,6 +226,7 @@ public class SearchList extends ListActivity {
 
         NotFindText  = (TextView)findViewById(R.id.NotFindText);
         BackButton = (Button)findViewById(R.id.BackButton_list);
+        BackButton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
 
         //BackButton功能===========================================================================================================
         BackButton.setOnClickListener(new View.OnClickListener() {
@@ -209,20 +251,13 @@ public class SearchList extends ListActivity {
         // 如果資料庫是空的，就建立一些範例資料
         // 這是為了方便測試用的，完成應用程式以後可以拿掉
         GetMedicineData();
+        GetCosmeticData();
         ItemDAO itemDAO = new ItemDAO(getApplicationContext());
-        StoreData(itemDAO,resultMedicineArray);
-
+        StoreData(itemDAO, resultMedicineArray,resultCosmeticArray);
 
         //(化妝品)===============================================================================================================================================
-        GetCosmeticData();
+
         ItemDAO itemDAOCos = new ItemDAO(getApplicationContext());
-        StoreData(itemDAOCos,resultCosmeticArray);
-
-
-        if (itemDAOCos.getCount() == 0) {
-            itemDAOCos.sample();
-        }
-
 
         ArrayList<String> albumList = new ArrayList<String>();
 
@@ -230,10 +265,7 @@ public class SearchList extends ListActivity {
 
         //獲得DataBase所有資料(藥品)
         if(SearchActivity.classification==1) item = itemDAO.getAll();
-        else item = itemDAOCos.getAll();
-        //Log.v("s",item.get(6).getTitle());
-        //System.out.print(item.get(5).getTitle());
-        //獲得DataBase所有資料(化妝品)
+        else  item = itemDAOCos.getAll();
 
         //(需完成)找出符合資料
         boolean Find = false;      //是否包含 true:包含 false:未包含
@@ -249,10 +281,10 @@ public class SearchList extends ListActivity {
                 itemDAOCos.delete(i);
             //}
         }*/
-        String a=Integer.toString(itemDAO.getCount());
+        //String a=Integer.toString(itemDAO.getCount());
         if(SearchActivity.classification==1) {
             //開始搜尋(藥品)
-            int len=itemDAO.getCount();
+            int len=itemDAO.getCount()-resultCosmeticArray.length();
             for (int i = 0; i < len; i++) {
                 //Log.v("caca",Integer.toString(i));
                 if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
@@ -273,7 +305,9 @@ public class SearchList extends ListActivity {
         else {
             //開始搜尋(化妝品)
             int len=itemDAOCos.getCount();
-            for (int i = 0; i < len; i++) {
+            int startlen =  resultMedicineArray.length()+5;
+
+            for (int i = startlen; i < len; i++) {
                 if (item.get(i).getTitle().indexOf(TitleName) != -1) Find = true; //有找出是否包含字
                 else Find = false; //沒有找出是否包含字
 

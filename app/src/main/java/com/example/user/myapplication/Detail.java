@@ -43,6 +43,7 @@ public class Detail extends AppCompatActivity {
         TextView Law = (TextView)findViewById(R.id.LawText);
         TextView LawDate = (TextView)findViewById(R.id.LawDateText);
         BackButton = (Button)findViewById(R.id.BackButton_Detail);
+        BackButton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
 
        //設定字型
         Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
