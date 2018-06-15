@@ -45,11 +45,11 @@ public class Detail extends AppCompatActivity {
         BackButton = (Button)findViewById(R.id.BackButton_Detail);
 
        //設定字型
-        Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        CompanyName.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        Detail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        Law.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
-        LawDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/wt021.ttf"));
+        Title.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        CompanyName.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        Detail.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        Law.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        LawDate.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
 
         //將值放入UI
         Title.setText(titlestring);

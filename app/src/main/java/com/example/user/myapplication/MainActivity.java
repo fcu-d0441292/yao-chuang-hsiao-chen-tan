@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setbutton=findViewById(R.id.set_button);
         MedText = (TextView) findViewById(R.id.MedtextView);
         CosText = (TextView) findViewById(R.id.CostextView);
-        //MedText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/pingfang.ttf"));
-        //CosText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/pingfang.ttf"));
+        MedText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
+        CosText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
 
         View.OnClickListener bt_medicine=new View.OnClickListener() {
             @Override

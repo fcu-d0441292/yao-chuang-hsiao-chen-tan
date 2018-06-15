@@ -133,9 +133,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/ListViewBackGround"
-                android:divider="@color/colorPrimary"
+                android:divider="@color/colorPrimaryDark"
 
-                android:dividerHeight="3px">
+                android:dividerHeight="2px">
 
             </ListView>
         </LinearLayout>
