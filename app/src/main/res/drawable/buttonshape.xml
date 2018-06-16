@@ -41,7 +41,7 @@
                 android:angle="45"
                 android:centerX="35%"
                 android:startColor="#ff7484ED"
-                android:centerColor="#ffa3bded"
+                android:centerColor="#B9B6E5"
                 android:endColor="#ffa3bded"
                 android:type="linear"
                 />

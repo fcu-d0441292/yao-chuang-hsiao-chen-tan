@@ -139,7 +139,7 @@
                 android:divider="@color/colorPrimaryDark"
 
                 android:dividerHeight="2px"
-                android:listSelector="@drawable/buttonshape">
+                android:listSelector="@drawable/buttonshape2">
 
             </ListView>
         </LinearLayout>
