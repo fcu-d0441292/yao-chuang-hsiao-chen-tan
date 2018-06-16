@@ -70,7 +70,7 @@ public class SearchList extends ListActivity {
         intent.putExtra("KEY_Law", Law);           //傳送到Detail的內容
         intent.putExtra("KEY_LawDate", LawDate);       //傳送到Detail的內容
         startActivity(intent);//執行切換
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+        overridePendingTransition(R.anim.zoomin, R.anim.zoomout); //切換動畫
     }
   //按下查詢結果結束******************************************************************************************/
 

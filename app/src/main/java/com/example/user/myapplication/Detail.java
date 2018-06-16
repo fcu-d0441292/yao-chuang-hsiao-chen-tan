@@ -64,7 +64,7 @@ public class Detail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+                overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out); //切換動畫
                 finish();
             }
 

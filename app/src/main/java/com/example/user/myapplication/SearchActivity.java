@@ -153,16 +153,16 @@ public class SearchActivity extends ListActivity {
                     if (RecordNumber != 0) {
                         //對話視窗
                         builder.setMessage("是否清除藥品歷史紀錄，確定要繼續嗎?").setPositiveButton("清除", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(SearchActivity.this, "藥品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
-                                        RecordNumber = 0;
-                                        NowNumber = 0;
-                                        editor.putInt("RecordNumber", RecordNumber);
-                                        editor.putInt("NowNumber", NowNumber);
-                                        editor.commit();//要記得加
-                                        onResume();
-                                    }
-                                })
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(SearchActivity.this, "藥品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
+                                RecordNumber = 0;
+                                NowNumber = 0;
+                                editor.putInt("RecordNumber", RecordNumber);
+                                editor.putInt("NowNumber", NowNumber);
+                                editor.commit();//要記得加
+                                onResume();
+                            }
+                        })
                                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                     }
@@ -290,7 +290,7 @@ public class SearchActivity extends ListActivity {
 
         //(藥品)
         if(classification==1)Name = settings.getString(RecordString[position], "aaa");
-        //(化妝品)
+            //(化妝品)
         else Name = settings.getString(RecordStringCos[position], "aaa");
 
         //傳送出去的值
