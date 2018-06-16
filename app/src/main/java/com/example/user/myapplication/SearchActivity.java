@@ -1,6 +1,7 @@
 //搜尋頁面
 package com.example.user.myapplication;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.app.AlertDialog.THEME_DEVICE_DEFAULT_DARK;
+import static android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT;
+import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 public class SearchActivity extends ListActivity {
 
@@ -50,6 +55,7 @@ public class SearchActivity extends ListActivity {
         //classification = 2;
         //UI綁定
         input = (EditText)findViewById(R.id.SerachInput);
+        input.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         okbutton = (Button)findViewById(R.id.ok_button);
         okbutton.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         DelButton = (Button)findViewById(R.id.DelRecordButton);
@@ -138,34 +144,63 @@ public class SearchActivity extends ListActivity {
             public void onClick(View view) {
 
                 SharedPreferences settings = getSharedPreferences("PREF",MODE_PRIVATE);
-                SharedPreferences.Editor editor = settings.edit();
+                final SharedPreferences.Editor editor = settings.edit();
+                AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this,THEME_DEVICE_DEFAULT_LIGHT); //對話視窗
+
 
                 if(classification==1) {
                     //(藥品)
-                    if (RecordNumber != 0)
-                        Toast.makeText(SearchActivity.this, "藥品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(SearchActivity.this, "沒有任何藥品歷史記錄!!!", Toast.LENGTH_SHORT).show();
-                    RecordNumber = 0;
-                    NowNumber = 0;
-                    editor.putInt("RecordNumber", RecordNumber);
-                    editor.putInt("NowNumber", NowNumber);
-                    editor.commit();//要記得加
+                    if (RecordNumber != 0) {
+                        //對話視窗
+                        builder.setMessage("是否清除藥品歷史紀錄，確定要繼續嗎?").setPositiveButton("清除", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Toast.makeText(SearchActivity.this, "藥品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
+                                        RecordNumber = 0;
+                                        NowNumber = 0;
+                                        editor.putInt("RecordNumber", RecordNumber);
+                                        editor.putInt("NowNumber", NowNumber);
+                                        editor.commit();//要記得加
+                                        onResume();
+                                    }
+                                })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                });
+                        AlertDialog about_dialog = builder.create();
+                        about_dialog.show();
+                    }
+
+                    else Toast.makeText(SearchActivity.this, "沒有任何藥品歷史記錄!!!", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     //(化妝品)
-                    if (RecordNumberCos != 0)
-                        Toast.makeText(SearchActivity.this, "化妝品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
+                    if (RecordNumberCos != 0) {
+                        //對話視窗
+                        builder.setMessage("是否清除化妝品歷史紀錄，確定要繼續嗎?").setPositiveButton("清除", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(SearchActivity.this, "化妝品歷史記錄清除完畢。", Toast.LENGTH_SHORT).show();
+                                RecordNumberCos = 0;
+                                NowNumberCos = 0;
+                                editor.putInt("RecordNumberCos", RecordNumberCos);
+                                editor.putInt("NowNumberCos", NowNumberCos);
+                                editor.commit();//要記得加
+                                onResume();
+                            }
+                        })
+                                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                });
+                        AlertDialog about_dialog = builder.create();
+                        about_dialog.show();
+                    }
                     else
                         Toast.makeText(SearchActivity.this, "沒有任何化妝品歷史記錄!!!", Toast.LENGTH_SHORT).show();
-                    RecordNumberCos = 0;
-                    NowNumberCos = 0;
-                    editor.putInt("RecordNumberCos", RecordNumberCos);
-                    editor.putInt("NowNumberCos", NowNumberCos);
-                    editor.commit();//要記得加
+
                 }
 
-                onResume();
+
             }
 
         }); //DelButton功能============================================================================================================

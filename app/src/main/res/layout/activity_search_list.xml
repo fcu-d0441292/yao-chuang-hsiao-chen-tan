@@ -44,10 +44,10 @@
             android:layout_height="29dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/buttonshape"
+            android:background="@drawable/out_line2"
             android:text="⊙以下為符合的資料⊙"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@android:color/background_light"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -65,7 +65,8 @@
             android:layout_height="match_parent"
             android:background="@color/ListViewBackGround"
             android:divider="#7484ED"
-            android:dividerHeight="2px" />
+            android:dividerHeight="2px"
+            android:listSelector="@drawable/buttonshape" />
     </LinearLayout>
 
     <ImageView

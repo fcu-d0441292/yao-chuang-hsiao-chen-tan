@@ -65,7 +65,8 @@
                 android:shadowDy="0"
                 android:shadowRadius="5"
                 android:text="清除歷史記錄"
-                android:textColor="@android:color/holo_red_light" />
+                android:textColor="@android:color/holo_red_light"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,10 +83,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="30dp"
-                    android:layout_height="28dp"
+                    android:layout_width="15dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="7dp"
                     android:layout_weight="1"
-                    android:text="✍"
+                    android:background="@drawable/smartphone3"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="26sp" />
@@ -136,7 +138,8 @@
                 android:background="@color/ListViewBackGround"
                 android:divider="@color/colorPrimaryDark"
 
-                android:dividerHeight="2px">
+                android:dividerHeight="2px"
+                android:listSelector="@drawable/buttonshape">
 
             </ListView>
         </LinearLayout>

@@ -293,7 +293,7 @@ public class SearchList extends ListActivity {
                 //依照上面結果放入ListView
                 if (Find) {
                     //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
-                    albumList.add(item.get(i).getTitle());
+                    albumList.add("⊙"+item.get(i).getTitle());
                     Find = false;
                     FindSomething = true;
                     AllNumber[Count] = i - Count;
@@ -314,7 +314,7 @@ public class SearchList extends ListActivity {
                 //依照上面結果放入ListView
                 if (Find) {
                     //String.valueOf(itemDAO.getCount())  + item.get(0).getTitle() + " " +  item.get(1).getTitle() + " " + item.get(2).getTitle() + " " + item.get(3).getTitle() + itemDAO.getCount()
-                    albumList.add(item.get(i).getTitle());
+                    albumList.add("⊙"+item.get(i).getTitle());
                     Find = false;
                     FindSomething = true;
                     AllNumber[Count] = i - Count;
@@ -328,7 +328,7 @@ public class SearchList extends ListActivity {
 
         NotFindText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
         if(FindSomething){
-            NotFindText.setText("⊙以下為符合的資料⊙");
+            NotFindText.setText("⊙以下為符合的資料，共"+Count+"筆⊙");
         }
         else NotFindText.setText("⊙沒找到任何資料⊙");
 
