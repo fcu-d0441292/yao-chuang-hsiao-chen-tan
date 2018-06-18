@@ -8,16 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="384dp"
-        android:layout_height="512dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:scaleType="center"
         app:srcCompat="@drawable/imageback"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <LinearLayout
-        android:layout_width="379dp"
-        android:layout_height="511dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="-1dp">
@@ -141,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="感謝各位使用者的支持，正是由於各位的寶貴意見和反饋，使這支app在細節中不斷精益求精。也感謝陳錫民老師。"
+                android:text="感謝各位使用者的支持，正是由於各位寶貴的意見和反饋，才能使這個APP在細節中不斷精益求精。也感謝陳錫民老師這段時間以來的指導，才能完成這麼一支實用且有幫助的APP。"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />

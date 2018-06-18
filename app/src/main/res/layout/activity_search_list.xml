@@ -69,11 +69,4 @@
             android:listSelector="@drawable/buttonshape2" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/triangle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/triangle1"
-        android:translationX="320dp"
-        android:translationY="450dp" />
 </android.support.constraint.ConstraintLayout>

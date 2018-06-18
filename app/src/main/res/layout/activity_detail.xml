@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="513dp"
+        android:layout_height="match_parent"
         android:scaleType="center"
         app:srcCompat="@drawable/imageback"
         tools:layout_editor_absoluteX="-13dp"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/TitleText"
-            android:layout_width="365dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -52,7 +52,7 @@
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@android:color/background_dark"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -87,6 +87,7 @@
             android:layout_height="28dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/detailout"
             android:padding="5dp"
             android:text="⊙違反情節⊙"
@@ -109,6 +110,7 @@
             android:layout_height="26dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/buttonshape"
             android:padding="5dp"
             android:text="⊙查處情形⊙"
@@ -131,6 +133,7 @@
             android:layout_height="26dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/buttonshape"
             android:padding="5dp"
             android:text="⊙處分日期⊙"
@@ -147,14 +150,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
-    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/triangle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:translationX="320dp"
-        android:translationY="450dp"
-        app:srcCompat="@drawable/triangle1" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

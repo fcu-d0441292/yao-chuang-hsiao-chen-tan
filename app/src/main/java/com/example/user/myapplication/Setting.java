@@ -23,6 +23,7 @@ public class Setting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        getSupportActionBar().hide();//隱藏標題題
 
         //UI綁定
         tv_version = (TextView)findViewById(R.id.tv_version);
@@ -45,7 +46,7 @@ public class Setting extends AppCompatActivity {
                 //傳送出去的值
                 Intent intent = new Intent();
                 intent.setClass(Setting.this,MainActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
-                startActivity(intent);                                 //執行切換
+                //startActivity(intent);                                 //執行切換
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
                 finish();
             }

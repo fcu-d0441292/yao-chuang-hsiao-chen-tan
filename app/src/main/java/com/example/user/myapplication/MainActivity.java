@@ -3,9 +3,14 @@ package com.example.user.myapplication;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,29 +29,31 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private ImageButton medicine;
     private ImageButton cosmetic;
-    private ImageButton setbutton;
+    //private ImageButton setbutton;
     private TextView MedText;
     private TextView CosText;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id=item.getItemId();
+        switch (id){
+            case  R.id.about:
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,Setting.class);
+                startActivity(intent);
+                break;
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
         }
-    };
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.navigation,menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         medicine=findViewById(R.id.bt_medicine);
         cosmetic=findViewById(R.id.bt_cosmetic);
-        setbutton=findViewById(R.id.set_button);
+        //setbutton=findViewById(R.id.set_button);
         MedText = (TextView) findViewById(R.id.MedtextView);
         CosText = (TextView) findViewById(R.id.CostextView);
         MedText.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/circle.otf"));
@@ -89,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         } ;
         cosmetic.setOnClickListener((bt_cosmetic));
 
-        View.OnClickListener set_button=new View.OnClickListener() {
+        /*View.OnClickListener set_button=new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
@@ -98,9 +103,22 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
             }
         } ;
-        setbutton.setOnClickListener((set_button));
+        setbutton.setOnClickListener((set_button));*/
 
 
     }
+
+    //實體返回健===========================================================================================================
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 攔截返回鍵
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onBackPressed();
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
+            finish();
+        }
+        return true;
+    }
+    //實體返回健===========================================================================================================
 
 }

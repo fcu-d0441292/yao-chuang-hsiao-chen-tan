@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewDebug;
 import android.widget.ArrayAdapter;
@@ -47,6 +50,27 @@ public class SearchList extends ListActivity {
     private ImageView NotFind;
     private Button BackButton;
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id=item.getItemId();
+        switch (id){
+            case  R.id.about:
+                Intent intent=new Intent();
+                intent.setClass(SearchList.this,Setting.class);
+                startActivity(intent);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.navigation,menu);
+        return true;
+    }
 
     //按下查詢結果**************************************************************************
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -235,7 +259,7 @@ public class SearchList extends ListActivity {
                 //傳送出去的值
                 Intent intent = new Intent();
                 intent.setClass(SearchList.this,SearchActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
-                startActivity(intent);                                 //執行切換
+               // startActivity(intent);                                 //執行切換
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
                 finish();
             }
@@ -347,7 +371,7 @@ public class SearchList extends ListActivity {
             //傳送出去的值
             Intent intent = new Intent();
             intent.setClass(SearchList.this,SearchActivity.class); //切換頁面(從SearchActivity 切換到 MainActivity)
-            startActivity(intent);                                      //執行切換
+            //startActivity(intent);                                      //執行切換
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out); //切換動畫
             finish();
         }

@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="413dp"
-        android:layout_height="610dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/imageback"
         android:scaleType="center"
         tools:layout_editor_absoluteX="0dp"
@@ -32,20 +32,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/set_button"
-            android:layout_width="match_parent"
-            android:layout_height="39dp"
-            android:layout_marginLeft="330dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/setting_change"
-            app:srcCompat="@color/ListViewBackGround" />
-
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="match_parent"
-            android:layout_height="207dp"
+            android:layout_height="280dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="20dp"
             app:srcCompat="@drawable/detective1" />
 
         <LinearLayout
@@ -61,8 +54,9 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="186dp"
+                android:layout_width="204dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/out_line"
                 android:orientation="vertical">
 
                 <TextView
@@ -82,17 +76,18 @@
                     android:id="@+id/bt_medicine"
                     android:layout_width="match_parent"
                     android:layout_height="81dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/login_button_selector"
                     app:srcCompat="@color/ListViewBackGround" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="198dp"
+                android:layout_width="205dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/out_line"
                 android:orientation="vertical">
 
                 <TextView
@@ -112,9 +107,9 @@
                     android:id="@+id/bt_cosmetic"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="30dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/cosmetic_change"
                     app:srcCompat="@color/ListViewBackGround" />

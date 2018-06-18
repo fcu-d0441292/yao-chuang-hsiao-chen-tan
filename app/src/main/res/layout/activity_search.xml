@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="381dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="center"
         android:src="@drawable/imageback"
@@ -72,7 +72,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="446dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="-2dp">
@@ -142,13 +142,8 @@
                 android:listSelector="@drawable/buttonshape2">
 
             </ListView>
-        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/triangle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/triangle1" />
+        </LinearLayout>
 
     </LinearLayout>
 
